@@ -1,0 +1,45 @@
+//plugins {
+//    id 'org.springframework.boot' version '2.2.4.RELEASE'
+//    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+//    id 'java'
+//}
+//
+//
+//group = 'co.pipe'
+//version = '0.0.1'
+//sourceCompatibility = '1.8'
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter'
+//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//    }
+//}
+//
+//test {
+//    useJUnitPlatform()
+//}
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation project(':model')
+    implementation project(':usecase')
+    implementation project(':jpa-repository')
+    implementation project(':api-rest')
+
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+
+}
+
+jar {
+    archivesBaseName = rootProject.name
+    libsDirName = project(':').getBuildDir()
+}

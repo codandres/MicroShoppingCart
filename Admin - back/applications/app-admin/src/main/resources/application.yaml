@@ -1,0 +1,25 @@
+##Spring Configuration
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: app-administration
+  datasource:
+#    data: classpath:/infraestructure/driven-adapters/jpa-repository/main/java/co/pipe/admin/role/resources/import.sql
+    url: jdbc:mysql://localhost:3306/admindb?serverTimezone=America/Bogota&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: sasa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
